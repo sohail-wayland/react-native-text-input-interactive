@@ -57,6 +57,12 @@ export default class InteractiveTextInput extends React.Component<
     this.state = {};
   }
 
+   textInputRef = React.createRef<TextInput>();
+
+    focus = () => {
+        this.textInputRef.current?.focus();
+    };
+
   showOriginColor = () => {
     Animated.timing(this.interpolatedColor, {
       duration: 350,
@@ -120,6 +126,7 @@ export default class InteractiveTextInput extends React.Component<
     });
     return (
       <AnimatedTextInput
+        ref={this.textInputRef}
         placeholderTextColor={placeholderTextColor}
         placeholder="Email"
         {...this.props}
